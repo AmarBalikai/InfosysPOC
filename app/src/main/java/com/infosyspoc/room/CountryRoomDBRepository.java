@@ -35,6 +35,7 @@ public class CountryRoomDBRepository {
 
         @Override
         protected Void doInBackground(final List<CountryTable>... params) {
+            mAsyncTaskDao.deleteAll();
             mAsyncTaskDao.insertPosts(params[0]);
             return null;
         }

@@ -16,6 +16,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -31,6 +32,7 @@ import com.infosyspoc.viewmodel.CountryDetailViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.infosyspoc.utils.Constatets.COUNTRY_INFORMATION;
 import static com.infosyspoc.utils.Constatets.COUNTRY_NAME;
@@ -42,6 +44,8 @@ public class MainFragment extends Fragment {
     private CountryDetailViewModel mainViewModel;
     private CountryAdapter countryAdapter;
     private SharedPreferences mSharePreference;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +63,7 @@ public class MainFragment extends Fragment {
         countryAdapter = new CountryAdapter();
         binding.rvCountryList.setAdapter(countryAdapter);
 
-        mSharePreference = getActivity().getSharedPreferences(COUNTRY_INFORMATION, Context.MODE_PRIVATE);
+        mSharePreference = Objects.requireNonNull(getActivity()).getSharedPreferences(COUNTRY_INFORMATION, Context.MODE_PRIVATE);
 
         getAllCountryInformation();
 
@@ -74,16 +78,12 @@ public class MainFragment extends Fragment {
 
     private void getAllCountryInformation() {
 
-        mainViewModel.getAllPosts().observe(getActivity(), new Observer<List<CountryTable>>() {
+        mainViewModel.getAllPosts().observe(Objects.requireNonNull(getActivity()), new Observer<List<CountryTable>>() {
             @Override
             public void onChanged(@Nullable List<CountryTable> modelInformationList) {
                 swipeRefreshLayout.setRefreshing(false);
-                ((MainActivity)getActivity()).getSupportActionBar().setTitle(mSharePreference.getString(COUNTRY_NAME,""));
+                ((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar().setTitle(mSharePreference.getString(COUNTRY_NAME,""));
 
-                /*if(!modelInformationList.get(0).getStatus())
-                {
-                    Toast.makeText(getActivity(),SOMETHING_WENT_WRONG_PLEASE_TRY_AGAIN,Toast.LENGTH_LONG).show();
-                }*/
 
                 countryAdapter.setCountryResponseList((ArrayList<CountryTable>) modelInformationList);
             }

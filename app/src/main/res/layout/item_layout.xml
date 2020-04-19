@@ -33,7 +33,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,7 +43,7 @@
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.15"
                     android:orientation="vertical">
 
                     <TextView
@@ -70,11 +69,14 @@
                         android:weightSum="2">
 
                         <TextView
+
                             android:id="@+id/tvDesc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
+                            android:layout_weight="0.6"
                             android:fontFamily="serif"
+                            android:paddingRight="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_5sdp"
                             android:text="@{data.description!=null?data.description:`No Description`}"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12ssp"
@@ -83,10 +85,12 @@
                         <ImageView
                             android:id="@+id/imgImage"
                             bind:avatar="@{data.imageHref}"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.2" />
+                            android:layout_weight="1.4" />
                     </LinearLayout>
+
 
                 </RelativeLayout>
 
@@ -95,9 +99,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="end"
 
-                    android:layout_weight="1.8">
+
+                    android:layout_weight="1.85">
 
                     <ImageView
+
                         android:id="@+id/ivArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

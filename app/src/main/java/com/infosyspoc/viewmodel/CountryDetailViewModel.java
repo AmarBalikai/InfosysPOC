@@ -61,8 +61,8 @@ public class CountryDetailViewModel extends AndroidViewModel implements Retrofit
 
   @Override
   public void onFailure(String error) {
-    //mAllPosts.getValue().get(0).setStatus(false);
-    //mAllPostsssssss.getValue().
+
+    Toast.makeText(application,SOMETHING_WENT_WRONG_PLEASE_TRY_AGAIN,Toast.LENGTH_LONG).show();
 
   }
 

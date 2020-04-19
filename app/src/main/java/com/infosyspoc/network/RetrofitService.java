@@ -43,9 +43,9 @@ public class RetrofitService
            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
            httpClient.addInterceptor(logging);
 
-           httpClient.connectTimeout(5, TimeUnit.SECONDS)
-                   .writeTimeout(5, TimeUnit.SECONDS)
-                   .readTimeout(5, TimeUnit.SECONDS);
+           httpClient.connectTimeout(120, TimeUnit.SECONDS)
+                   .writeTimeout(120, TimeUnit.SECONDS)
+                   .readTimeout(120, TimeUnit.SECONDS);
 
            retrofit = new Retrofit.Builder()
                    .baseUrl(BASE_URL)
