@@ -18,6 +18,15 @@ public class CountryTable {
     private String description;
 
     private String imageHref;
+    /*private Boolean status = true;
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }*/
 
     public int getId() {
         return id;
